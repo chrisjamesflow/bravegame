@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a72be9167ac734183ada1dcccf7e7bf2, type: 3}
+  m_Name: Wolf_BaseData
+  m_EditorClassIdentifier: 
+  maxHealth: 30
+  DamageHopSpeed: 3
+  wallCheckDistance: 0.1
+  ledgeCheckDistance: 0.7
+  groundCheckRadius: 0.3
+  ledgeForAttackCheckDistance: 1
+  jumpWallCheckDistance: 3
+  jumpUpCheckDistance: 3
+  jumpDownCheckDistance: 3
+  lowAgroDistance: 10
+  lowMaxAgroDistance: 14
+  midAgroDistance: 10
+  midMaxAgroDistance: 14
+  highAgroDistance: 10
+  highMaxAgroDistance: 14
+  behindAgroDistance: 10
+  behindMaxAgroDistance: 14
+  stunResistance: 3
+  stunRecoveryTime: 2
+  closeRangeActionDistance: 2
+  hitParticle: {fileID: 5512190861582885246, guid: a1b297f2ac11243618e1a58506470359, type: 3}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 8
