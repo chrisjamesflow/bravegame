@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     [SerializeField]
     private Transform respawnPoint;
 
@@ -58,12 +60,23 @@ public class GameManager : MonoBehaviour
 
     private AudioManager enemyAudio;
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start()
     {
         CVC = GameObject.Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
 
         enemyAudio = GameObject.FindGameObjectWithTag("Enemy").GetComponent<AudioManager>();
-
     }
 
     private void Update()

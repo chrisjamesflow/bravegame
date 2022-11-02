@@ -8,6 +8,7 @@ TagManager:
   - ParticleContainer
   - CourageOrb1
   - CourageOrbGet1
+  - VirtualCamera
   layers:
   - Default
   - TransparentFX

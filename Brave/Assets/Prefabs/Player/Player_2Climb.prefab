@@ -347,9 +347,10 @@ GameObject:
   - component: {fileID: 7826966400376137463}
   - component: {fileID: 7826966400376137461}
   - component: {fileID: 7826966400376137344}
+  - component: {fileID: 4252698138701899234}
   m_Layer: 3
   m_Name: Player_2Climb
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,8 +409,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -262355833
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e9e668d2c0fd44dc7b8a5de717b72141, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -863,6 +864,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 7826966400408868674}
+--- !u!114 &4252698138701899234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826966400376137470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5e4da2c226a45be8e1675501bc8d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingPosition: {fileID: 11400000, guid: 7079d251cfcc04c9b825c28a90eecef3, type: 2}
 --- !u!1 &7826966400408868673
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,7 +995,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -262355833
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

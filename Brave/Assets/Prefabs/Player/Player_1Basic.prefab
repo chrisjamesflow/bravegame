@@ -427,9 +427,10 @@ GameObject:
   - component: {fileID: 226625533060148973}
   - component: {fileID: 5537263145056891070}
   - component: {fileID: 5537263145056891068}
+  - component: {fileID: -7942691934580182346}
   m_Layer: 3
   m_Name: Player_1Basic
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -469,7 +470,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -943,6 +944,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+--- !u!114 &-7942691934580182346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537263145056891063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5e4da2c226a45be8e1675501bc8d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingPosition: {fileID: 11400000, guid: 7079d251cfcc04c9b825c28a90eecef3, type: 2}
 --- !u!1 &5537263145144221982
 GameObject:
   m_ObjectHideFlags: 0

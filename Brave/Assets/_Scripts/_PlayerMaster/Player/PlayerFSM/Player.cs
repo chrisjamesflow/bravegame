@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     public BoxCollider2D MovementCollider { get; private set; }
     public AudioManager Audio { get; private set; }
     public PlayerInventory Inventory { get; private set; }
+    //public SO_PlayerVectorValue StartingPosition { get; private set; }
     #endregion
 
     #region Other Variables
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour
         MovementCollider = GetComponent<BoxCollider2D>();
         Audio = GetComponent<AudioManager>();
         Inventory = GetComponent<PlayerInventory>();
+        //transform.position = StartingPosition.initialPlayerPosition;
 
         PrimaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.primary]);
         //SecondaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.secondary]);
