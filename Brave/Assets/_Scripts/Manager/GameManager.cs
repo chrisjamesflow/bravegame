@@ -5,10 +5,24 @@ using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    private CinemachineVirtualCamera CVC;
+    private AudioManager enemyAudio;
 
     [SerializeField]
     private Transform respawnPoint;
+
+    [SerializeField]
+    private float respawnTime;
+
+    [SerializeField]
+    public GameObject player;
+
+    [SerializeField]
+    private GameObject newPlayer;
+
+    private float respawnTimeStart;
+
+    private bool respawn;
 
     [SerializeField]
     private Transform orbPoint;
@@ -21,13 +35,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject courageOrbGet;
-
-    [SerializeField]
-    private GameObject oldPlayer;
-
-    [SerializeField]
-    private GameObject newPlayer;
-
+    
     [SerializeField]
     private GameObject[] enemyAwake;
 
@@ -35,43 +43,20 @@ public class GameManager : MonoBehaviour
     private GameObject[] enemyAsleep;
 
     [SerializeField]
-    private float respawnTime;
-
-    [SerializeField]
     private float sleepTime = 2f;
-
-    private float orbSpawnTime = 4f;
-
-    private float respawnTimeStart;
-
-    private float orbSpawnTimeStart;
 
     private float sleepStartTime;
 
-    private bool respawn;
+    private bool asleep;
+    
+    private float orbSpawnTime = 4f;
+
+    private float orbSpawnTimeStart;
 
     private bool orbSpawn;
 
     private bool orbSpawnTwo;
-
-    private bool asleep;
-
-    private CinemachineVirtualCamera CVC;
-
-    private AudioManager enemyAudio;
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
+    
     private void Start()
     {
         CVC = GameObject.Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
@@ -97,7 +82,7 @@ public class GameManager : MonoBehaviour
         orbSpawnTimeStart = Time.time;
         orbSpawn = true;
     }
-
+    
     public void WakeUp()
     {
         sleepStartTime = Time.time;
@@ -108,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         if(Time.time >= respawnTimeStart + respawnTime && respawn)
         {
-            var playerTemp = Instantiate(oldPlayer, respawnPoint);
+            var playerTemp = Instantiate(player, respawnPoint);
             CVC.m_Follow = playerTemp.transform;
             respawn = false;
         }
@@ -129,7 +114,7 @@ public class GameManager : MonoBehaviour
             courageOrbGet.transform.gameObject.SetActive(false);
             var playerTemp = Instantiate(newPlayer, orbPoint);
             CVC.m_Follow = playerTemp.transform;
-            oldPlayer = newPlayer;
+            player = newPlayer;
             orbSpawnTwo = false;
         }
     }

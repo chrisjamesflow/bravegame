@@ -55,7 +55,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag=="CourageOrb1")
+        if (collision.gameObject.CompareTag("CourageOrb1"))
         {
             GM.OrbSpawn();
             Destroy(courageOrb);
