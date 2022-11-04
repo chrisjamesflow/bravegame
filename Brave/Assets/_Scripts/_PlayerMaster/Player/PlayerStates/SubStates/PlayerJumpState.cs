@@ -8,8 +8,10 @@ public class PlayerJumpState : PlayerAbilityState
 
     public PlayerJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
-        amountOfJumpsLeft = 2;
+        amountOfJumpsLeft = jumpAmount;
+        jumpAmount = 1;
     }
+
     public override void Enter()
     {
         base.Enter();
@@ -33,7 +35,7 @@ public class PlayerJumpState : PlayerAbilityState
         }
     }
 
-    public void ResetAmountOfJumpsLeft() => amountOfJumpsLeft = 2;
+    public void ResetAmountOfJumpsLeft() => amountOfJumpsLeft = jumpAmount;
 
     public void DecreaseAmountOfJumpsLeft() => amountOfJumpsLeft--;
 }

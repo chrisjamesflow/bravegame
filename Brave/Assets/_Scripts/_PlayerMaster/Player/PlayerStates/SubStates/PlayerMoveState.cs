@@ -39,7 +39,7 @@ public class PlayerMoveState : PlayerGroundedState
             {
                 stateMachine.ChangeState(player.IdleState);
             }
-            else if (/*yInput == -1*/crouchInput)
+            else if (/*yInput == -1*/crouchInput && crouchAbility)
             {
                 stateMachine.ChangeState(player.CrouchMoveState);
             }

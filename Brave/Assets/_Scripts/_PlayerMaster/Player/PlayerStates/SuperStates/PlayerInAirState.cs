@@ -12,6 +12,11 @@ public class PlayerInAirState : PlayerState
     private bool dashInput;
     private bool glideInput;
 
+    //Upgrades
+    public static bool climbAbility;
+    public static bool glideAbility;
+    public static bool dashAbility;
+
     //Checks
     private bool isGrounded;
     private bool isTouchingWall;
@@ -60,6 +65,13 @@ public class PlayerInAirState : PlayerState
         {
             StartWallJumpCoyoteTime();
         }
+    }
+
+    public void Start()
+    {
+        climbAbility = false;
+        glideAbility = false;
+        dashAbility = false;
     }
 
     public override void Enter()
@@ -112,7 +124,7 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.LandState);
         }
-        else if (isTouchingWall && !isTouchingLedge && !isGrounded)
+        else if (isTouchingWall && climbAbility && !isTouchingLedge && !isGrounded)
         {
             stateMachine.ChangeState(player.LedgeClimbState);
         }
@@ -128,7 +140,7 @@ public class PlayerInAirState : PlayerState
             stateMachine.ChangeState(player.JumpState);
             player.Audio.Play("JumpInAir");
         }
-        else if (isTouchingWall && grabInput && isTouchingLedge)
+        else if (isTouchingWall && climbAbility && grabInput && isTouchingLedge)
         {
             stateMachine.ChangeState(player.WallGrabState);
         }
@@ -136,11 +148,11 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.WallSlideState);
         }
-        else if (dashInput && player.DashState.CheckIfCanDash())
+        else if (dashInput && dashAbility && player.DashState.CheckIfCanDash())
         {
             stateMachine.ChangeState(player.DashState);
         }
-        else if (glideInput && (Movement?.CurrentVelocity.y <= playerData.glideDropVelocity))
+        else if (glideInput && glideAbility && (Movement?.CurrentVelocity.y <= playerData.glideDropVelocity))
         {
             stateMachine.ChangeState(player.GlideState);
         }

@@ -17,25 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public GameObject player;
 
-    [SerializeField]
-    private GameObject newPlayer;
-
     private float respawnTimeStart;
 
     private bool respawn;
 
-    [SerializeField]
-    private Transform orbPoint;
-
-    [SerializeField]
-    private GameObject orbSparks;
-
-    [SerializeField]
-    private GameObject orbSparksPos;
-
-    [SerializeField]
-    private GameObject courageOrbGet;
-    
     [SerializeField]
     private GameObject[] enemyAwake;
 
@@ -49,14 +34,6 @@ public class GameManager : MonoBehaviour
 
     private bool asleep;
     
-    private float orbSpawnTime = 4f;
-
-    private float orbSpawnTimeStart;
-
-    private bool orbSpawn;
-
-    private bool orbSpawnTwo;
-    
     private void Start()
     {
         CVC = GameObject.Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
@@ -68,19 +45,12 @@ public class GameManager : MonoBehaviour
     {
         CheckRespawn();
         CheckSleepTime();
-        CheckOrbSpawn();
     }
 
     public void Respawn()
     {
         respawnTimeStart = Time.time;
         respawn = true;
-    }
-
-    public void OrbSpawn()
-    {
-        orbSpawnTimeStart = Time.time;
-        orbSpawn = true;
     }
     
     public void WakeUp()
@@ -96,26 +66,6 @@ public class GameManager : MonoBehaviour
             var playerTemp = Instantiate(player, respawnPoint);
             CVC.m_Follow = playerTemp.transform;
             respawn = false;
-        }
-    }
-
-    private void CheckOrbSpawn()
-    {
-        if (orbSpawn)
-        {
-            Instantiate(orbSparks, orbSparksPos.transform.position, orbSparks.transform.rotation);
-            courageOrbGet.transform.gameObject.SetActive(true);
-            CVC.m_Follow = courageOrbGet.transform;
-            orbSpawn = false;
-            orbSpawnTwo = true;
-        }
-        if (Time.time >= orbSpawnTimeStart + orbSpawnTime && orbSpawnTwo)
-        {
-            courageOrbGet.transform.gameObject.SetActive(false);
-            var playerTemp = Instantiate(newPlayer, orbPoint);
-            CVC.m_Follow = playerTemp.transform;
-            player = newPlayer;
-            orbSpawnTwo = false;
         }
     }
 

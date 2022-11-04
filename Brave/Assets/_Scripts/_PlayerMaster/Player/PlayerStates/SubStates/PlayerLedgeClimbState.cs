@@ -8,12 +8,15 @@ public class PlayerLedgeClimbState : PlayerState
     private Vector2 cornerPos;
     private Vector2 startPos;
     private Vector2 stopPos;
+    private Vector2 failStopPos;
     private Vector2 workspace;
 
     private bool isHanging;
     private bool isClimbing;
     private bool jumpInput;
     private bool isTouchingCeiling;
+
+    public static bool crouchAbility;
 
     private int xInput;
     private int yInput;
@@ -42,6 +45,11 @@ public class PlayerLedgeClimbState : PlayerState
         isHanging = true;
     }
 
+    public void Start()
+    {
+        crouchAbility = false;
+    }
+
     public override void Enter()
     {
         base.Enter();
@@ -55,6 +63,7 @@ public class PlayerLedgeClimbState : PlayerState
 
         startPos.Set(cornerPos.x - (Movement.FacingDirection * playerData.startOffset.x), cornerPos.y - playerData.startOffset.y);
         stopPos.Set(cornerPos.x + (Movement.FacingDirection * playerData.stopOffset.x), cornerPos.y + playerData.stopOffset.y);
+        failStopPos.Set(cornerPos.x - (Movement.FacingDirection * playerData.failStopOffset.x), cornerPos.y - playerData.failStopOffset.y);
 
         player.transform.position = startPos;
     }
@@ -66,9 +75,14 @@ public class PlayerLedgeClimbState : PlayerState
 
         isHanging = false;
 
-        if (isClimbing)
+        if (isClimbing && crouchAbility)
         {
             player.transform.position = stopPos;
+            isClimbing = false;
+        }
+        else
+        {
+            player.transform.position = failStopPos;
             isClimbing = false;
         }
     }
@@ -79,7 +93,7 @@ public class PlayerLedgeClimbState : PlayerState
 
         if (isAnimationFinished)
         {
-            if (isTouchingCeiling)
+            if (isTouchingCeiling && crouchAbility)
             {
                 stateMachine.ChangeState(player.CrouchIdleState);
             }

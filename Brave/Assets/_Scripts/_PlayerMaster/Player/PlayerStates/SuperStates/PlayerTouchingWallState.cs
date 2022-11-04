@@ -12,6 +12,9 @@ public class PlayerTouchingWallState : PlayerState
     protected int xInput;
     protected int yInput;
 
+    public static bool climbAbility;
+    public static bool wallJumpAbility;
+
     protected Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
     private Movement movement;
 
@@ -49,6 +52,12 @@ public class PlayerTouchingWallState : PlayerState
         }
     }
 
+    public void Start()
+    {
+        climbAbility = false;
+        wallJumpAbility = false;
+    }
+
     public override void Enter()
     {
         base.Enter();
@@ -70,12 +79,12 @@ public class PlayerTouchingWallState : PlayerState
         grabInput = player.InputHandler.GrabInput;
         jumpInput = player.InputHandler.JumpInput;
 
-        if (jumpInput)
+        if (jumpInput && wallJumpAbility)
         {
             player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
             stateMachine.ChangeState(player.WallJumpState);
         }
-        else if (isGrounded/* GRAB WALL FROM GROUND&& !grabInput*/)
+        else if (isGrounded)
         {
             stateMachine.ChangeState(player.IdleState);
         }

@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     [SerializeField]
     private float maxHealth;
 
-    private GameObject courageOrb;
+    //private GameObject courageOrb;
 
     /*[SerializeField]
     private GameObject
@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         currentHealth = maxHealth;
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        courageOrb = GameObject.FindGameObjectWithTag("CourageOrb1");
+        //courageOrb = GameObject.FindGameObjectWithTag("CourageOrb1");
     }
 
     public void Damage(float amount)
@@ -53,7 +53,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("CourageOrb1"))
         {
@@ -61,5 +61,5 @@ public class PlayerStats : MonoBehaviour, IDamageable
             Destroy(courageOrb);
             Destroy(gameObject);
         }
-    }
+    }*/
 }

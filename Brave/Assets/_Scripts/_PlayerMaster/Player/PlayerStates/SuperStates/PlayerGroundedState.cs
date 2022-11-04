@@ -16,12 +16,10 @@ public class PlayerGroundedState : PlayerState
     private CollisionSenses collisionSenses;
 
     private bool jumpInput;
-    private bool grabInput;
     public bool crouchInput;
     public bool isGrounded;
-    private bool isTouchingWall;
-    private bool isTouchingLedge;
-    private bool dashInput;
+
+    public static bool crouchAbility;
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -34,10 +32,13 @@ public class PlayerGroundedState : PlayerState
         if (CollisionSenses)
         {
             isGrounded = CollisionSenses.Ground;
-            isTouchingWall = CollisionSenses.WallFront;
-            isTouchingLedge = CollisionSenses.LedgeHorizontal;
             isTouchingCeiling = CollisionSenses.Ceiling;
         }
+    }
+
+    public void Start()
+    {
+        crouchAbility = false;
     }
 
     public override void Enter()
@@ -65,8 +66,6 @@ public class PlayerGroundedState : PlayerState
         xInput = player.InputHandler.NormInputX;
         yInput = player.InputHandler.NormInputY;
         jumpInput = player.InputHandler.JumpInput;
-        grabInput = player.InputHandler.GrabInput;
-        dashInput = player.InputHandler.DashInput;
         crouchInput = player.InputHandler.CrouchInput;
 
         Movement?.SetVelocityX(0f);
