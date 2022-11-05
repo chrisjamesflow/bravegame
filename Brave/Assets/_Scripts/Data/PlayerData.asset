@@ -23,7 +23,7 @@ MonoBehaviour:
   wallSlideVelocity: 5
   wallClimbVelocity: 4
   startOffset: {x: 0.4, y: 0.6}
-  stopOffset: {x: 0.4, y: 0.7}
+  stopOffset: {x: 0.4, y: 0.96}
   failStopOffset: {x: 0, y: 0}
   dashCooldown: 0.5
   maxHoldTime: 0.4

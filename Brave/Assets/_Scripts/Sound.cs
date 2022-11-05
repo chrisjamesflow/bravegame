@@ -23,6 +23,8 @@ public class Sound
     public float maxDistance;
     [SerializeField]
     public AudioRolloffMode rolloffMode;
+    [SerializeField]
+    public bool playOnAwake;
 
     [HideInInspector]
     public AudioSource source;

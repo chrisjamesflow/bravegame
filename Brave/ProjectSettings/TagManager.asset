@@ -9,6 +9,7 @@ TagManager:
   - CourageOrb1
   - CourageOrbGet1
   - VirtualCamera
+  - GameManager
   layers:
   - Default
   - TransparentFX

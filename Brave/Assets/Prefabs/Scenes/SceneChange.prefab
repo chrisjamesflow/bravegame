@@ -218,7 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8494363319602059453}
   - component: {fileID: 8494363319602059452}
-  - component: {fileID: 8494363319602059427}
+  - component: {fileID: 8150278835703553489}
   m_Layer: 0
   m_Name: SceneChange
   m_TagString: Untagged
@@ -267,7 +267,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
---- !u!114 &8494363319602059427
+--- !u!114 &8150278835703553489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,11 +276,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8494363319602059426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75299ba93789d455fbd451b87fd24902, type: 3}
+  m_Script: {fileID: 11500000, guid: f32ec84416c0345cc98f1e922cd550ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 1
-  playerPosition: {x: 7, y: 1.25}
-  playerPositionMemory: {fileID: 11400000, guid: 7079d251cfcc04c9b825c28a90eecef3, type: 2}
+  exitName: ToHouseFromTown
   transitionTime: 0.1
   transition: {fileID: 6166812336234442220}

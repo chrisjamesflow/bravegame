@@ -1,12 +1,20 @@
 ﻿<Properties StartupConfiguration="{A20BAE43-92EA-46A6-24E7-EB2864550735}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/Manager/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/_Player/PlayerStates/SubStates/PlayerLedgeClimbState.cs">
     <Files>
-      <File FileName="Assets/_Scripts/Manager/GameManager.cs" Line="20" Column="1" />
+      <File FileName="Assets/_Scripts/Upgrades/UpgradeToCrouch.cs" Line="21" Column="27" />
+      <File FileName="Assets/_Scripts/Upgrades/UpgradeToDoubleJump.cs" Line="9" Column="31" />
+      <File FileName="Assets/_Scripts/Upgrades/UpgradeToGlide.cs" Line="9" Column="31" />
+      <File FileName="Assets/_Scripts/Upgrades/UpgradeToWallJump.cs" Line="22" Column="58" />
+      <File FileName="Assets/_Scripts/Upgrades/UpgradeToDash.cs" Line="7" Column="34" />
+      <File FileName="Assets/_Scripts/Upgrades/UpgradeToClimb.cs" Line="22" Column="23" />
+      <File FileName="Assets/_Scripts/_Player/PlayerStates/SuperStates/PlayerInAirState.cs" Line="42" Column="6" />
+      <File FileName="Assets/_Scripts/_Player/PlayerStates/SubStates/PlayerWallSlideState.cs" Line="5" Column="14" />
+      <File FileName="Assets/_Scripts/_Player/PlayerStates/SubStates/PlayerLedgeClimbState.cs" Line="91" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7d46386d-4ab6-4a57-91f1-112c2987f8a0" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="de873868-3c86-4b73-8e23-ca0efac8ca55" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

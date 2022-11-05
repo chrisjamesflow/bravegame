@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
             s.source.minDistance = s.minDistance;
             s.source.maxDistance = s.maxDistance;
             s.source.rolloffMode = s.rolloffMode;
+            s.source.playOnAwake = s.playOnAwake;
         }
     }
 
