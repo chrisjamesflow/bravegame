@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
@@ -7,39 +5,27 @@ using Cinemachine;
 public class GameManager : MonoBehaviour
 {
     private CinemachineVirtualCamera CVC;
-
-    [SerializeField]
-    private Transform respawnPoint;
-
-    [SerializeField]
-    private float respawnTime;
-
-    public static GameObject player;
-
-    [SerializeField]
-    public ParticleSystem upgradeEffect;
-
-    [SerializeField]
-    public Transform orbPosition;
-
     private AudioManager Audio;
 
-    private float respawnTimeStart;
+    public static GameObject player;
+    public PauseMenu pauseMenu;
 
+    [SerializeField] public ParticleSystem upgradeEffect;
+    [SerializeField] public Transform orbPosition;
+
+    [SerializeField] private float respawnTime;
+    private float respawnTimeStart;
     private bool respawn;
 
-    [SerializeField]
-    private float sleepTime = 2f;
+    [SerializeField] private float sleepTime = 2f;
+    private float sleepTimeStart1;
+    private float sleepTimeStart2;
+    private bool asleep1;
+    private bool asleep2;
 
-    private float sleepStartTime;
-
-    private bool asleep;
-    
-    [SerializeField]
-    private GameObject[] enemyAwake;
-
-    [SerializeField]
-    private GameObject[] enemyAsleep;
+    [SerializeField] private GameObject[]
+        enemyAwake,
+        enemyAsleep;
 
     void OnEnable()
     {
@@ -66,7 +52,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         CheckRespawn();
-        CheckSleepTime();
+        CheckSleepTime1();
+        CheckSleepTime2();
     }
 
     public void OrbEffects()
@@ -81,29 +68,47 @@ public class GameManager : MonoBehaviour
         respawn = true;
     }
 
-    public void WakeUp()
-    {
-        sleepStartTime = Time.time;
-        asleep = true;
-    }
-
     private void CheckRespawn()
     {
         if(Time.time >= respawnTimeStart + respawnTime && respawn)
         {
-            player.transform.position = respawnPoint.transform.position;
             player.transform.gameObject.SetActive(true);
+            pauseMenu.LoadPlayer();
             respawn = false;
         }
     }
 
-    private void CheckSleepTime()
+    // Enemy 1
+    public void Sleep1()
     {
-        if(Time.time >= sleepStartTime + sleepTime && asleep)
+        sleepTimeStart1 = Time.time;
+        asleep1 = true;
+    }
+
+    private void CheckSleepTime1()
+    {
+        if(Time.time >= sleepTimeStart1 + sleepTime && asleep1)
         {
-            enemyAwake[0].transform.gameObject.SetActive(true);
             enemyAsleep[0].transform.gameObject.SetActive(false);
-            asleep = false;
+            enemyAwake[0].transform.gameObject.SetActive(true);
+            asleep1 = false;
+        }
+    }
+
+    // Enemy 2
+    public void Sleep2()
+    {
+        sleepTimeStart2 = Time.time;
+        asleep2 = true;
+    }
+
+    private void CheckSleepTime2()
+    {
+        if (Time.time >= sleepTimeStart2 + sleepTime && asleep2)
+        {
+            enemyAsleep[1].transform.gameObject.SetActive(false);
+            enemyAwake[1].transform.gameObject.SetActive(true);
+            asleep1 = false;
         }
     }
 }

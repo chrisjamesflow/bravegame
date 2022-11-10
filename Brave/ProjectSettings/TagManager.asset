@@ -50,11 +50,11 @@ TagManager:
   - name: Terrain
     uniqueID: 3018776865
     locked: 0
-  - name: Enemy
-    uniqueID: 4046165971
-    locked: 0
   - name: Player
     uniqueID: 4032611463
+    locked: 0
+  - name: Enemy
+    uniqueID: 4046165971
     locked: 0
   - name: Foreground
     uniqueID: 878554149

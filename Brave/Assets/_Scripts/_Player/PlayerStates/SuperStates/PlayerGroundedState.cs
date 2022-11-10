@@ -94,19 +94,6 @@ public class PlayerGroundedState : PlayerState
             player.InAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.InAirState);
         }
-        /* GRAB WALL FROM GROUND
-        else if (isTouchingWall && grabInput && isTouchingLedge)
-        {
-            stateMachine.ChangeState(player.WallGrabState);
-            player.Audio.Stop("Move");
-            player.Audio.Stop("Crawl");
-        }
-        /* DASH FROM GROUND
-        else if (dashInput && player.DashState.CheckIfCanDash())
-        {
-            stateMachine.ChangeState(player.DashState);
-        }
-        */
     }
     public override void PhysicsUpdate()
     {

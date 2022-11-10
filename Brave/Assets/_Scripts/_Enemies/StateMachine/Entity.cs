@@ -7,9 +7,6 @@ public class Entity : MonoBehaviour
     private Movement Movement { get => movement ?? Core.GetCoreComponent(ref movement); }
     private Movement movement;
 
-    //private Stats Stats { get => stats ?? Core.GetCoreComponent(ref stats); }
-    //private Stats stats;
-
     public FiniteStateMachine stateMachine;
 
     public D_Entity entityData;
@@ -25,9 +22,9 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private Transform groundCheck;
     [SerializeField]
-    private Transform jumpWallCheck;
-    [SerializeField]
     private Transform ledgeCheck;
+    [SerializeField]
+    private Transform jumpWallCheck;
     [SerializeField]
     private Transform jumpUpCheck;
     [SerializeField]
@@ -41,21 +38,11 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private Transform playerCheckHigh;
 
-    //private float currentHealth;
-    //private float currentStunResistance;
-    //private float lastDamageTime;
-
     private Vector2 velocityWorkspace;
-
-    //protected bool isStunned;
-    protected bool isDead;
 
     public virtual void Awake()
     {
         Core = GetComponentInChildren<Core>();
-
-        //currentHealth = entityData.maxHealth;
-        //currentStunResistance = entityData.stunResistance;
 
         Audio = GetComponent<AudioManager>();
         anim = GetComponent<Animator>();
@@ -68,13 +55,6 @@ public class Entity : MonoBehaviour
     {
         Core.LogicUpdate();
         stateMachine.currentState.LogicUpdate();
-
-        //anim.SetFloat("yVelocity", Core.Movement.RB.velocity.y);
-
-        /*if(Time.time >= lastDamageTime + entityData.stunRecoveryTime)
-        {
-            ResetStunResistance();
-        }*/
     }
 
     public virtual void FixedUpdate()
@@ -166,12 +146,6 @@ public class Entity : MonoBehaviour
         velocityWorkspace.Set(Movement.RB.velocity.x, velocity);
         Movement.RB.velocity = velocityWorkspace;
     }
-
-    /*public virtual void ResetStunResistance()
-    {
-        isStunned = false;
-        currentStunResistance = entityData.stunResistance;
-    }*/
 
     public virtual void OnDrawGizmos()
     {

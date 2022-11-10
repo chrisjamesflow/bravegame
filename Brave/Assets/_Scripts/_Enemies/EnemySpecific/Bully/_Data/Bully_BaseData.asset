@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a72be9167ac734183ada1dcccf7e7bf2, type: 3}
+  m_Name: Bully_BaseData
+  m_EditorClassIdentifier: 
+  wallCheckDistance: 0.1
+  ledgeCheckDistance: 0.5
+  groundCheckRadius: 0.3
+  ledgeForAttackCheckDistance: 0.5
+  jumpWallCheckDistance: 4
+  jumpUpCheckDistance: 4
+  jumpDownCheckDistance: 8
+  lowAgroDistance: 9
+  lowMaxAgroDistance: 13
+  midAgroDistance: 9
+  midMaxAgroDistance: 13
+  highAgroDistance: 9
+  highMaxAgroDistance: 13
+  behindAgroDistance: 3
+  behindMaxAgroDistance: 5
+  closeRangeActionDistance: 1
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 8

@@ -12,32 +12,26 @@ public class Wolf : Entity
     public Wolf_JumpUpState jumpUpState { get; private set; }
     public Wolf_JumpDownState jumpDownState { get; private set; }
     public Wolf_MeleeAttackState meleeAttackState { get; private set; }
-    public Wolf_StunState stunState { get; private set; }
-    public Wolf_DeadState deadState { get; private set; }
 
     [SerializeField]
     private Transform meleeAttackPosition;
 
     [SerializeField]
+    private D_ChargeState chargeStateData;
+    [SerializeField]
     private D_IdleState idleStateData;
+    [SerializeField]
+    private D_JumpDownState jumpDownStateData;
+    [SerializeField]
+    private D_JumpUpState jumpUpStateData;
+    [SerializeField]
+    private D_LookForPlayer lookForPlayerStateData;
+    [SerializeField]
+    private D_MeleeAttackState meleeAttackStateData;
     [SerializeField]
     private D_MoveState moveStateData;
     [SerializeField]
     private D_PlayerDetected playerDetectedData;
-    [SerializeField]
-    private D_ChargeState chargeStateData;
-    [SerializeField]
-    private D_LookForPlayer lookForPlayerStateData;
-    [SerializeField]
-    private D_JumpUpState jumpUpStateData;
-    [SerializeField]
-    private D_JumpDownState jumpDownStateData;
-    [SerializeField]
-    private D_MeleeAttackState meleeAttackStateData;
-    [SerializeField]
-    private D_StunState stunStateData;
-    [SerializeField]
-    private D_DeadState deadStateData;
 
     public override void Awake()
     {
@@ -51,8 +45,6 @@ public class Wolf : Entity
         jumpUpState = new Wolf_JumpUpState(this, stateMachine, "jumpUp", jumpUpStateData, this);
         jumpDownState = new Wolf_JumpDownState(this, stateMachine, "jumpDown", jumpDownStateData, this);
         meleeAttackState = new Wolf_MeleeAttackState(this, stateMachine, "meleeAttack", meleeAttackPosition, meleeAttackStateData, this);
-        stunState = new Wolf_StunState(this, stateMachine, "stun", stunStateData, this);
-        deadState = new Wolf_DeadState(this, stateMachine, "dead", deadStateData, this);
     }
 
     private void Start()
