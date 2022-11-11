@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public static bool CanPause = true;
 
     public EventSystem eventSystem;
     public GameObject resumeButton;
@@ -55,11 +56,14 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
-        Time.timeScale = 0f;
-        pauseMenuUI.SetActive(true);
-        playerInput.DeactivateInput();
-        AudioListener.pause = true;
-        GameIsPaused = true;
+        if (CanPause)
+        {
+            Time.timeScale = 0f;
+            pauseMenuUI.SetActive(true);
+            playerInput.DeactivateInput();
+            AudioListener.pause = true;
+            GameIsPaused = true;
+        }
 
         eventSystem.SetSelectedGameObject(null);
         eventSystem.SetSelectedGameObject(resumeButton);
@@ -78,6 +82,16 @@ public class PauseMenu : MonoBehaviour
         //MusicManager.instance.StopMusic();
 
         PlayerSaveData data = SaveSystem.LoadPlayer();
+
+        PlayerInAirState.climbAbility = data.inAirClimb;
+        PlayerWallSlideState.climbAbility = data.wallSlideClimb;
+        PlayerLedgeClimbState.crouchAbility = data.ledgeCrouch;
+        PlayerGroundedState.crouchAbility = data.groundCrouch;
+        PlayerInAirState.dashAbility = data.dash;
+        PlayerInAirState.glideAbility = data.glide;
+        PlayerJumpState.jumpAmount = data.jumpAmount;
+        PlayerTouchingWallState.wallJumpAbility = data.wallJump;
+        PlayerLedgeClimbState.wallJumpAbility = data.ledgeWallJump;
 
         Vector3 position;
         position.x = data.position[0];

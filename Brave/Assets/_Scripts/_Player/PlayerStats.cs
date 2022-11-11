@@ -57,6 +57,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02F;
         GM.Respawn();
+        PauseMenu.CanPause = false;
         player.transform.gameObject.SetActive(false);
     }
 }

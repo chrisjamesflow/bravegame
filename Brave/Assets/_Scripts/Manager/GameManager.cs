@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         if(Time.time >= respawnTimeStart + respawnTime && respawn)
         {
             player.transform.gameObject.SetActive(true);
+            PauseMenu.CanPause = true;
             pauseMenu.LoadPlayer();
             respawn = false;
         }

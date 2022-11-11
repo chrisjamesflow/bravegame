@@ -1,20 +1,10 @@
 ﻿<Properties StartupConfiguration="{A20BAE43-92EA-46A6-24E7-EB2864550735}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/Upgrades/UpgradeToDash.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/_Player/PlayerStats.cs">
     <Files>
-      <File FileName="Assets/_Scripts/Manager/GameManager.cs" Line="49" Column="1" />
-      <File FileName="Assets/_Scripts/UI/PauseMenu.cs" Line="77" Column="1" />
-      <File FileName="Assets/_Scripts/SaveData/PlayerSaveData.cs" Line="31" Column="63" />
-      <File FileName="Assets/_Scripts/SaveData/SaveSystem.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/SaveData/Checkpoint.cs" Line="29" Column="26" />
-      <File FileName="Assets/AudioManager.cs" Line="37" Column="6" />
-      <File FileName="Assets/_Scripts/Audio/MusicManager.cs" Line="34" Column="92" />
-      <File FileName="Assets/_Scripts/Audio/ChangeMusicTrigger.cs" Line="11" Column="7" />
-      <File FileName="Assets/_Scripts/Upgrades/UpgradeToClimb.cs" Line="21" Column="13" />
-      <File FileName="Assets/_Scripts/Upgrades/UpgradeToCrouch.cs" Line="21" Column="13" />
-      <File FileName="Assets/_Scripts/Upgrades/UpgradeToDash.cs" Line="33" Column="29" />
-      <File FileName="Assets/_Scripts/Upgrades/UpgradeToGlide.cs" Line="21" Column="13" />
-      <File FileName="Assets/_Scripts/Upgrades/UpgradeToDoubleJump.cs" Line="21" Column="13" />
-      <File FileName="Assets/_Scripts/Upgrades/UpgradeToWallJump.cs" Line="21" Column="13" />
+      <File FileName="Assets/_Scripts/Manager/GameManager.cs" Line="76" Column="39" />
+      <File FileName="Assets/_Scripts/_Player/PlayerStats.cs" Line="60" Column="36" />
+      <File FileName="Assets/_Scripts/UI/PauseMenu.cs" Line="65" Column="33" />
+      <File FileName="Assets/_Scripts/SaveData/PlayerSaveData.cs" Line="34" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

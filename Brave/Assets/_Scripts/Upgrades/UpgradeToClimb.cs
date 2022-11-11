@@ -1,12 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UpgradeToClimb : MonoBehaviour
 {
     public float animationTime = 4f;
     public Animator animator;
     private AudioSource Audio;
+    public GameObject player;
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        player = GameObject.FindWithTag("Player");
+    }
 
     private void Start()
     {
@@ -20,17 +37,20 @@ public class UpgradeToClimb : MonoBehaviour
         {
             PlayerInAirState.climbAbility = true;
             PlayerWallSlideState.climbAbility = true;
+            SaveSystem.SavePlayer(player);
             StartCoroutine(GetOrb());
         }
     }
 
     IEnumerator GetOrb()
     {
+        PauseMenu.CanPause = false;
         Audio.Stop();
         animator.SetTrigger("Start");
         yield return new WaitForSeconds(animationTime);
         PlayerManager.instance.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
         PlayerManager.instance.transform.gameObject.SetActive(true);
         Destroy(gameObject);
+        PauseMenu.CanPause = true;
     }
 }
