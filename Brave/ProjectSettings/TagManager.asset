@@ -10,6 +10,7 @@ TagManager:
   - CourageOrbGet1
   - VirtualCamera
   - GameManager
+  - Music
   layers:
   - Default
   - TransparentFX

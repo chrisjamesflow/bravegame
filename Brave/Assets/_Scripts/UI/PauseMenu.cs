@@ -75,6 +75,8 @@ public class PauseMenu : MonoBehaviour
     {
         Resume();
 
+        //MusicManager.instance.StopMusic();
+
         PlayerSaveData data = SaveSystem.LoadPlayer();
 
         Vector3 position;

@@ -222,8 +222,8 @@ MonoBehaviour:
   entityData: {fileID: 11400000, guid: cfe24f00c3a254184ade4fb458383d26, type: 2}
   wallCheck: {fileID: 2443354388720077672}
   groundCheck: {fileID: 2443354390022764498}
-  jumpWallCheck: {fileID: 2443354389432945784}
   ledgeCheck: {fileID: 2443354389783189148}
+  jumpWallCheck: {fileID: 2443354389432945784}
   jumpUpCheck: {fileID: 2443354389130325656}
   jumpDownCheck: {fileID: 2443354390500866880}
   playerCheckBelow: {fileID: 2443354390123245308}
@@ -231,16 +231,14 @@ MonoBehaviour:
   playerCheckMid: {fileID: 2443354389208374722}
   playerCheckHigh: {fileID: 2443354389347230016}
   meleeAttackPosition: {fileID: 2443354389687344284}
+  chargeStateData: {fileID: 11400000, guid: f90f33e162f334b479903a68f19d6225, type: 2}
   idleStateData: {fileID: 11400000, guid: c68b18696b9df4723b84232b450850d6, type: 2}
+  jumpDownStateData: {fileID: 11400000, guid: bbbf45373236c4aceac45a5523f2202c, type: 2}
+  jumpUpStateData: {fileID: 11400000, guid: c94fbd5d6c553451a9bb3b8b9cf8bdae, type: 2}
+  lookForPlayerStateData: {fileID: 11400000, guid: c2e7672492bcf4926a196d57796fb32e, type: 2}
+  meleeAttackStateData: {fileID: 11400000, guid: 945f3cfdf409144fd8f2a584c0ef1572, type: 2}
   moveStateData: {fileID: 11400000, guid: 106a26ff5fade41d982de8774b9bb435, type: 2}
   playerDetectedData: {fileID: 11400000, guid: ced336983231c4202bbbd091b4b4c9f4, type: 2}
-  chargeStateData: {fileID: 11400000, guid: f90f33e162f334b479903a68f19d6225, type: 2}
-  lookForPlayerStateData: {fileID: 11400000, guid: c2e7672492bcf4926a196d57796fb32e, type: 2}
-  jumpUpStateData: {fileID: 11400000, guid: c94fbd5d6c553451a9bb3b8b9cf8bdae, type: 2}
-  jumpDownStateData: {fileID: 11400000, guid: bbbf45373236c4aceac45a5523f2202c, type: 2}
-  meleeAttackStateData: {fileID: 11400000, guid: 945f3cfdf409144fd8f2a584c0ef1572, type: 2}
-  stunStateData: {fileID: 11400000, guid: b8e547a9bce554c53902d1b56994a516, type: 2}
-  deadStateData: {fileID: 11400000, guid: e603a4f650c2447388125d7f21b15850, type: 2}
 --- !u!114 &2443354388951051974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2443354389432945787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4, y: 0.28, z: 0}
+  m_LocalPosition: {x: 1.4, y: -0.24999997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2443354388951051999}
