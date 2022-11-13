@@ -7,18 +7,18 @@ public class MusicManager : MonoBehaviour
     public AudioSource source;
     public static MusicManager instance;
 
-    public float maxVolume = 1f;
-    public float minVolume = 0f;
-    
-    public float fadeInDuration = 2f;
-    public float fadeOutDuration = 2f;
+    private float maxVolume = 0.2f;
+    private float minVolume = 0f;
+
+    public float fadeInDuration = 1f;
+    public float fadeOutDuration = 1f;
 
     private IEnumerator fadeIn;
     private IEnumerator fadeOut;
-    
+
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
         }
@@ -57,7 +57,7 @@ public class MusicManager : MonoBehaviour
         float currentVolume = audioSource.volume;
         float targetValue = Mathf.Clamp(targetVolume, minVolume, maxVolume);
 
-        while(timer < duration)
+        while (timer < duration)
         {
             timer += Time.deltaTime;
             var newVolume = Mathf.Lerp(currentVolume, targetValue, timer / duration);

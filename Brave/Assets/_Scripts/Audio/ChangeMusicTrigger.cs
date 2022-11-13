@@ -8,8 +8,6 @@ public class ChangeMusicTrigger : MonoBehaviour
     public AudioClip newMusic;
     public AudioSource music;
 
-    //private MusicManager musicManager;
-
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -24,12 +22,7 @@ public class ChangeMusicTrigger : MonoBehaviour
     {
         music = GameObject.FindWithTag("Music").GetComponent<AudioSource>();
     }
-    /*
-    void Start()
-    {
-        musicManager = FindObjectOfType<MusicManager>();
-    }
-    */
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;

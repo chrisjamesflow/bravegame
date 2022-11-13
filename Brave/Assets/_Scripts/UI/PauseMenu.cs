@@ -69,6 +69,12 @@ public class PauseMenu : MonoBehaviour
         eventSystem.SetSelectedGameObject(resumeButton);
     }
 
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+        MusicManager.instance.StopMusic();
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit game!");
@@ -78,8 +84,6 @@ public class PauseMenu : MonoBehaviour
     public void LoadPlayer()
     {
         Resume();
-
-        //MusicManager.instance.StopMusic();
 
         PlayerSaveData data = SaveSystem.LoadPlayer();
 

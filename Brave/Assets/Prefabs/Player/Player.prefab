@@ -220,7 +220,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -262355833
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -429,7 +429,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -262355833
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e9e668d2c0fd44dc7b8a5de717b72141, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -506,7 +506,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.63, y: 1.95}
+  m_Size: {x: 0.63, y: 1.96}
   m_EdgeRadius: 0
 --- !u!114 &4113275156063767745
 MonoBehaviour:
@@ -909,8 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2e816ead1784a2ea6a41908ec3d2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeEffect: {fileID: 5439295336193335832, guid: 36b176900dbaf4cde83ed7cdc016e7c4, type: 3}
-  playerPosition: {fileID: 4113275156063767746}
+  GM: {fileID: 0}
 --- !u!1 &4113275156146556402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1288,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -262355833
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f4bbbe28e493a49aebf3b68ad39f8179, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
