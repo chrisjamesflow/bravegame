@@ -27,6 +27,7 @@ public class EnterScene : MonoBehaviour
     private void Start()
     {
         playerInput.ActivateInput();
+
         if (PlayerPrefs.GetString("LastExitName") == lastExitName)
         {
             PlayerManager.instance.transform.position = transform.position;

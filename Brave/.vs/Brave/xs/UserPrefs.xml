@@ -1,19 +1,12 @@
 ﻿<Properties StartupConfiguration="{A20BAE43-92EA-46A6-24E7-EB2864550735}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/Audio/MusicManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/Dialogue/DialogueManager.cs">
     <Files>
-      <File FileName="Assets/_Scripts/Manager/GameManager.cs" Line="48" Column="1" />
-      <File FileName="Assets/_Scripts/UI/PauseMenu.cs" Line="75" Column="43" />
-      <File FileName="Assets/_Scripts/UI/MainMenu.cs" Line="103" Column="6" />
-      <File FileName="Assets/_Scripts/SceneChanges/ExitScene.cs" Line="26" Column="80" />
-      <File FileName="Assets/_Scripts/SceneChanges/EnterScene.cs" Line="5" Column="5" />
-      <File FileName="Assets/_Scripts/Audio/MusicManager.cs" Line="12" Column="1" />
-      <File FileName="Assets/_Scripts/Audio/ChangeMusicTrigger.cs" Line="35" Column="9" />
-      <File FileName="Assets/_Scripts/SaveData/Checkpoint.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/Dialogue/DialogueManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e05a246b-d324-43fa-857f-ad856183e4b4" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4dc5c108-2008-4615-b25c-053958789959" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

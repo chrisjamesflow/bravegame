@@ -11,7 +11,6 @@ public class MainMenu : MonoBehaviour
     public GameObject player;
     public PlayerInput playerInput;
     public string exitName;
-    public AudioClip newMusic;
     public AudioSource music;
     public AudioSource menuMusic;
 
@@ -54,7 +53,6 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         playerInput.DeactivateInput();
-        MusicManager.instance.StartMusic(newMusic);
     }
     
     public void New()
@@ -99,6 +97,8 @@ public class MainMenu : MonoBehaviour
 
         PlayerPrefs.SetString("LastExitName", exitName);
 
+        MusicManager.instance.StopMusicInstantly();
+
         SceneManager.LoadScene(1);
     }
 
@@ -128,6 +128,8 @@ public class MainMenu : MonoBehaviour
         player.transform.position = position;
 
         PlayerPrefs.DeleteKey("LastExitName");
+
+        MusicManager.instance.StopMusicInstantly();
 
         SceneManager.LoadScene(data.currentScene);
     }

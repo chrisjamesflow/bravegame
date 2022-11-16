@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeMusicTrigger : MonoBehaviour
 {
     public AudioClip newMusic;
+    public AudioClip newMusicSource;
     public AudioSource music;
 
     void OnEnable()
@@ -27,11 +28,6 @@ public class ChangeMusicTrigger : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         MusicManager.instance.StartMusic(newMusic);
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (!other.CompareTag("Player")) return;
-        MusicManager.instance.StopMusic();
+        MusicManager.instance.StartSourceMusic(newMusicSource);
     }
 }

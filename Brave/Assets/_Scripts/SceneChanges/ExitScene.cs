@@ -40,7 +40,6 @@ public class ExitScene : MonoBehaviour
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
-        MusicManager.instance.StopMusic();
         SceneManager.LoadScene(sceneToLoad);
     }
 

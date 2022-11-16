@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject player;
     public PlayerInput playerInput;
+    public AudioSource pauseMusic;
 
     void OnEnable()
     {
@@ -50,6 +51,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
         playerInput.ActivateInput();
+        pauseMusic.Stop();
         AudioListener.pause = false;
         GameIsPaused = false;
     }
@@ -62,6 +64,8 @@ public class PauseMenu : MonoBehaviour
             pauseMenuUI.SetActive(true);
             playerInput.DeactivateInput();
             AudioListener.pause = true;
+            pauseMusic.ignoreListenerPause = true;
+            pauseMusic.Play();
             GameIsPaused = true;
         }
 
@@ -71,6 +75,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ToMainMenu()
     {
+        pauseMusic.Stop();
         SceneManager.LoadScene(0);
         MusicManager.instance.StopMusic();
     }
@@ -104,6 +109,8 @@ public class PauseMenu : MonoBehaviour
         player.transform.position = position;
 
         PlayerPrefs.DeleteKey("LastExitName");
+
+        MusicManager.instance.StopMusicInstantly();
 
         SceneManager.LoadScene(data.currentScene);
     }

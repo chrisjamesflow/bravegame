@@ -11,6 +11,7 @@ TagManager:
   - VirtualCamera
   - GameManager
   - Music
+  - MusicSource
   layers:
   - Default
   - TransparentFX

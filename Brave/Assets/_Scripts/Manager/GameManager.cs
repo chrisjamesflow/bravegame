@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     public void OrbEffects()
     {
+        StartCoroutine(LowerMusicVolume());
         Instantiate(upgradeEffect, orbPosition);
         Audio.Play("OrbGet");
     }
@@ -77,6 +79,16 @@ public class GameManager : MonoBehaviour
             pauseMenu.LoadPlayer();
             respawn = false;
         }
+    }
+
+    IEnumerator LowerMusicVolume()
+    {
+        yield return new WaitForSeconds(0.5f);
+        MusicManager.instance.source.volume = 0.05f;
+        MusicManager.instance.sourceTwo.volume = 0.05f;
+        yield return new WaitForSeconds(3.5f);
+        MusicManager.instance.source.volume = 0.2f;
+        MusicManager.instance.sourceTwo.volume = 0.2f;
     }
 
     // Enemy 1
