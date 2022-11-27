@@ -13,11 +13,26 @@ public class MainMenu : MonoBehaviour
     public string exitName;
     public AudioSource music;
     public AudioSource menuMusic;
+    public GameData data;
 
     public float maxVolume = 1f;
     public float minVolume = 0f;
     public float fadeOutDuration = 2f;
     public Animator transition;
+
+    public void Awake()
+    {
+        Time.timeScale = 0f;
+        AudioListener.pause = true;
+        PauseMenu.GameIsPaused = true;
+
+        menuMusic.ignoreListenerPause = true;
+        menuMusic.volume = 0.2f;
+        menuMusic.Play();
+
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(playButton); 
+    }
 
     void OnEnable()
     {
@@ -36,25 +51,6 @@ public class MainMenu : MonoBehaviour
         music = GameObject.FindWithTag("Music").GetComponent<AudioSource>();
     }
 
-    public void Awake()
-    {
-        Time.timeScale = 0f;
-        AudioListener.pause = true;
-        PauseMenu.GameIsPaused = true;
-
-        menuMusic.ignoreListenerPause = true;
-        menuMusic.volume = 0.2f;
-        menuMusic.Play();
-
-        eventSystem.SetSelectedGameObject(null);
-        eventSystem.SetSelectedGameObject(playButton); 
-    }
-
-    private void Start()
-    {
-        playerInput.DeactivateInput();
-    }
-    
     public void New()
     {
         StartCoroutine(CRNew());
@@ -85,21 +81,15 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSecondsRealtime(fadeOutDuration);
         Resume();
 
-        PlayerInAirState.climbAbility = false;
-        PlayerWallSlideState.climbAbility = false;
-        PlayerLedgeClimbState.crouchAbility = false;
-        PlayerGroundedState.crouchAbility = false;
-        PlayerInAirState.dashAbility = false;
-        PlayerInAirState.glideAbility = false;
-        PlayerJumpState.jumpAmount = 1;
-        PlayerTouchingWallState.wallJumpAbility = false;
-        PlayerLedgeClimbState.wallJumpAbility = false;
-
         PlayerPrefs.SetString("LastExitName", exitName);
 
         MusicManager.instance.StopMusicInstantly();
 
-        SceneManager.LoadScene(1);
+        DataPersistenceManager.instance.NewGame();
+
+        DataPersistenceManager.instance.SaveGame();
+
+        SceneManager.LoadSceneAsync(1);
     }
 
     IEnumerator CRLoad()
@@ -109,29 +99,9 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSecondsRealtime(fadeOutDuration);
         Resume();
 
-        PlayerSaveData data = SaveSystem.LoadPlayer();
-
-        PlayerInAirState.climbAbility = data.inAirClimb;
-        PlayerWallSlideState.climbAbility = data.wallSlideClimb;
-        PlayerLedgeClimbState.crouchAbility = data.ledgeCrouch;
-        PlayerGroundedState.crouchAbility = data.groundCrouch;
-        PlayerInAirState.dashAbility = data.dash;
-        PlayerInAirState.glideAbility = data.glide;
-        PlayerJumpState.jumpAmount = data.jumpAmount;
-        PlayerTouchingWallState.wallJumpAbility = data.wallJump;
-        PlayerLedgeClimbState.wallJumpAbility = data.ledgeWallJump;
-
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
-        player.transform.position = position;
-
         PlayerPrefs.DeleteKey("LastExitName");
-
         MusicManager.instance.StopMusicInstantly();
-
-        SceneManager.LoadScene(data.currentScene);
+        DataPersistenceManager.instance.LoadGame();
     }
 
     IEnumerator CRQuit()

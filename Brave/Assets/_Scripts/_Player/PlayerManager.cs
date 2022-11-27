@@ -3,10 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, IDamageable
 {
     public static PlayerManager instance;
     public GameManager GM;
+    private GameObject player;
+    private float currentHealth;
+    [SerializeField] private float maxHealth;
+    public int currentScene;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
 
     void OnEnable()
     {
@@ -25,15 +41,22 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        if(instance != null)
+        currentHealth = maxHealth;
+    }
+
+    public void Damage(float amount)
+    {
+        DecreaseHealth(amount);
+    }
+
+    public void DecreaseHealth(float amount)
+    {
+        currentHealth -= amount;
+
+        if (currentHealth <= 0.0f)
         {
-            Destroy(gameObject);
+            Die();
         }
-        else
-        {
-            instance = this;
-        }
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D upgrade)
@@ -43,5 +66,14 @@ public class PlayerManager : MonoBehaviour
             GM.OrbEffects();
             transform.gameObject.SetActive(false);
         }
+    }
+
+    public void Die()
+    {
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02F;
+        GM.Respawn();
+        PauseMenu.CanPause = false;
+        player.transform.gameObject.SetActive(false);
     }
 }

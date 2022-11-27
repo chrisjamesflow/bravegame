@@ -82,6 +82,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            StateMachine.ChangeState(IdleState);
+            return;
+        }
         Core.LogicUpdate();
         StateMachine.CurrentState.LogicUpdate();
     }

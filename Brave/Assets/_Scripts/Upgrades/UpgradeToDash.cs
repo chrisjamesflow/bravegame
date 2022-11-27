@@ -33,10 +33,9 @@ public class UpgradeToDash : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.tag == "Player")
         {
             PlayerInAirState.dashAbility = true;
-            SaveSystem.SavePlayer(player);
             StartCoroutine(GetOrb());
         }
     }
@@ -47,6 +46,7 @@ public class UpgradeToDash : MonoBehaviour
         Audio.Stop();
         animator.SetTrigger("Start");
         yield return new WaitForSeconds(animationTime);
+        DataPersistenceManager.instance.SaveGame();
         PlayerManager.instance.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
         PlayerManager.instance.transform.gameObject.SetActive(true);
         PauseMenu.CanPause = true;

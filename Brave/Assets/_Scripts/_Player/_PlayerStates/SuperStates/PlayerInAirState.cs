@@ -67,13 +67,6 @@ public class PlayerInAirState : PlayerState
         }
     }
 
-    public void Start()
-    {
-        climbAbility = false;
-        glideAbility = false;
-        dashAbility = false;
-    }
-
     public override void Enter()
     {
         base.Enter();
@@ -107,19 +100,7 @@ public class PlayerInAirState : PlayerState
         glideInput = player.InputHandler.GlideInput;
 
         CheckJumpMultiplier();
-        //ATTACK FROM AIR
-        /*if (player.InputHandler.AttackInputs[(int)CombatInputs.primary])
-        {
-            stateMachine.ChangeState(player.PrimaryAttackState);
-        }
-        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary])
-        {
-            stateMachine.ChangeState(player.SecondaryAttackState);
-        }
-        else if (player.InputHandler.AttackInputs[(int)CombatInputs.tertiary])
-        {
-            stateMachine.ChangeState(player.TertiaryAttackState);
-        }*/
+
         if (isGrounded && Movement?.CurrentVelocity.y < 0.01f)
         {
             stateMachine.ChangeState(player.LandState);

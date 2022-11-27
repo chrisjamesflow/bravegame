@@ -37,7 +37,6 @@ public class UpgradeToCrouch : MonoBehaviour
         {
             PlayerLedgeClimbState.crouchAbility = true;
             PlayerGroundedState.crouchAbility = true;
-            SaveSystem.SavePlayer(player);
             StartCoroutine(GetOrb());
         }
     }
@@ -48,9 +47,10 @@ public class UpgradeToCrouch : MonoBehaviour
         Audio.Stop();
         animator.SetTrigger("Start");
         yield return new WaitForSeconds(animationTime);
+        DataPersistenceManager.instance.SaveGame();
         PlayerManager.instance.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
         PlayerManager.instance.transform.gameObject.SetActive(true);
-        Destroy(gameObject);
         PauseMenu.CanPause = true;
+        Destroy(gameObject);
     }
 }

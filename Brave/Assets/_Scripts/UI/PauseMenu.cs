@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Gamepad.current.startButton.wasPressedThisFrame || Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (!DialogueManager.GetInstance().dialogueIsPlaying && Gamepad.current.startButton.wasPressedThisFrame || Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (GameIsPaused)
             {
@@ -89,29 +89,8 @@ public class PauseMenu : MonoBehaviour
     public void LoadPlayer()
     {
         Resume();
-
-        PlayerSaveData data = SaveSystem.LoadPlayer();
-
-        PlayerInAirState.climbAbility = data.inAirClimb;
-        PlayerWallSlideState.climbAbility = data.wallSlideClimb;
-        PlayerLedgeClimbState.crouchAbility = data.ledgeCrouch;
-        PlayerGroundedState.crouchAbility = data.groundCrouch;
-        PlayerInAirState.dashAbility = data.dash;
-        PlayerInAirState.glideAbility = data.glide;
-        PlayerJumpState.jumpAmount = data.jumpAmount;
-        PlayerTouchingWallState.wallJumpAbility = data.wallJump;
-        PlayerLedgeClimbState.wallJumpAbility = data.ledgeWallJump;
-
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
-        player.transform.position = position;
-
+        DataPersistenceManager.instance.LoadGame();
         PlayerPrefs.DeleteKey("LastExitName");
-
         MusicManager.instance.StopMusicInstantly();
-
-        SceneManager.LoadScene(data.currentScene);
     }
 }

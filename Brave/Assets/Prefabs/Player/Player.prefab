@@ -363,10 +363,9 @@ GameObject:
   - component: {fileID: 4113275156063767745}
   - component: {fileID: 8444545512263431900}
   - component: {fileID: 4113275156063767747}
-  - component: {fileID: 4113275156063767751}
-  - component: {fileID: 4113275156063767748}
-  - component: {fileID: 8444545512263431901}
   - component: {fileID: 1194543656025720252}
+  - component: {fileID: 4113275156063767748}
+  - component: {fileID: 4113275156063767751}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -430,7 +429,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -262355833
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: e9e668d2c0fd44dc7b8a5de717b72141, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -693,6 +692,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fe275898-43c4-43b6-8fa7-c8878155743e
     m_ActionName: Gameplay/TertiaryAttack[/Mouse/rightButton,/DualShock4GamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8511be84-380e-4175-84fa-4d764c7c027a
+    m_ActionName: Gameplay/Pause[/DualShock4GamepadHID/start,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -724,6 +727,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 20c8190e8b0c44558a03a1d82180c93f, type: 2}
+--- !u!114 &1194543656025720252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4113275156063767758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2e816ead1784a2ea6a41908ec3d2dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GM: {fileID: 0}
+  maxHealth: 1
+--- !u!114 &4113275156063767748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4113275156063767758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be63eebc2e1ac4aca82468fa5820df94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 4113275156028292471}
 --- !u!114 &4113275156063767751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,47 +900,6 @@ MonoBehaviour:
     rolloffMode: 0
     playOnAwake: 0
     source: {fileID: 0}
---- !u!114 &4113275156063767748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4113275156063767758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be63eebc2e1ac4aca82468fa5820df94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 4113275156028292471}
---- !u!114 &8444545512263431901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4113275156063767758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a57c08b769d8e4cc69e47975506c8275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1
-  GM: {fileID: 0}
---- !u!114 &1194543656025720252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4113275156063767758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2e816ead1784a2ea6a41908ec3d2dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GM: {fileID: 0}
 --- !u!1 &4113275156146556402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1279,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -262355833
   m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: f4bbbe28e493a49aebf3b68ad39f8179, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

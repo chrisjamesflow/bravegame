@@ -12,6 +12,8 @@ TagManager:
   - GameManager
   - Music
   - MusicSource
+  - PauseMenu
+  - EventSystem
   layers:
   - Default
   - TransparentFX
