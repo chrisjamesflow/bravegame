@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1631493035781059114}
   m_Layer: 0
   m_Name: DataPersistenceManager
-  m_TagString: Untagged
+  m_TagString: DataPersistance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8daf69747587c454cb425ba6905b5481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initializeDataIfNull: 1
+  disableDataPersistence: 0
+  initializeDataIfNull: 0
   fileName: data.txt
   useEncryption: 0
+  player: {fileID: 0}

@@ -1668,6 +1668,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1631493035781059114, guid: 9055c884d49c94b4a8064a02d99d2d44, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1153942596}
     - target: {fileID: 1631493035781059115, guid: 9055c884d49c94b4a8064a02d99d2d44, type: 3}
       propertyPath: m_Name
       value: DataPersistenceManager
@@ -1815,6 +1819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166cd8dba2952473c8f6239ed3814aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!61 &696307504
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2529,6 +2534,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 795bb18809db24a44b5617efc2780101, type: 3}
+--- !u!1 &1153942596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4113275156063767758, guid: 795bb18809db24a44b5617efc2780101, type: 3}
+  m_PrefabInstance: {fileID: 1153942595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1164713501
 GameObject:
   m_ObjectHideFlags: 0
@@ -3865,6 +3875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af89399e1a94246ffa9b6ff213bb8cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitName: MenuPosition
   eventSystem: {fileID: 8285518513968782194}
   resumeButton: {fileID: 807113844031437907}
   pauseMenuUI: {fileID: 807113843719643426}

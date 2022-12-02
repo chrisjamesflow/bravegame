@@ -4534,6 +4534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af89399e1a94246ffa9b6ff213bb8cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exitName: MenuPosition
   eventSystem: {fileID: 8285518513571930073}
   resumeButton: {fileID: 807113844163066104}
   pauseMenuUI: {fileID: 807113843319580041}

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class DataPersistenceManager : MonoBehaviour
 {
     [Header("Debugging")]
+    [SerializeField] private bool disableDataPersistence = false;
     [SerializeField] private bool initializeDataIfNull = false;
 
     [Header("File Storage Config")]
@@ -16,6 +17,8 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
 
     private FileDataHandler dataHandler;
+
+    private string selectedProfileId = "";
 
     public static DataPersistenceManager instance { get; private set; }
 
@@ -29,26 +32,42 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
         instance = this;
-
         DontDestroyOnLoad(gameObject);
 
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
-
-        if (gameData == null && initializeDataIfNull)
+        if (disableDataPersistence)
         {
-            NewGame();
+            Debug.LogWarning("Data Persistence is currently disabled!");
         }
+
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+    }
+
+    public void ChangeSelectedProfileId(string newProfileId)
+    {
+        selectedProfileId = newProfileId;
+    }
+
+    public void DeleteProfileData(string profileId)
+    {
+        dataHandler.Delete(profileId);
     }
 
     public void NewGame()
     {
         gameData = new GameData();
-        Debug.Log("New Game Data");
+        dataHandler.Save(gameData, selectedProfileId);
     }
 
     public void LoadGame()
     {
-        if(gameData == null && initializeDataIfNull)
+        if (disableDataPersistence)
+        {
+            return;
+        }
+
+        gameData = dataHandler.Load(selectedProfileId);
+
+        if (gameData == null && initializeDataIfNull)
         {
             NewGame();
         }
@@ -58,10 +77,9 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
 
-        gameData = dataHandler.Load();
         player.transform.position = gameData.playerPosition;
         SceneManager.LoadScene(gameData.currentScene);
-        //
+
         PlayerInAirState.climbAbility = gameData.inAirClimb;
         PlayerWallSlideState.climbAbility = gameData.wallSlideClimb;
         PlayerLedgeClimbState.crouchAbility = gameData.ledgeCrouch;
@@ -71,20 +89,23 @@ public class DataPersistenceManager : MonoBehaviour
         PlayerInAirState.glideAbility = gameData.glide;
         PlayerTouchingWallState.wallJumpAbility = gameData.wallJump;
         PlayerLedgeClimbState.wallJumpAbility = gameData.ledgeWallJump;
-        //
-        Debug.Log("Loaded Game Data");
     }
 
     public void SaveGame()
     {
-        if(gameData == null)
+        if (disableDataPersistence)
+        {
+            return;
+        }
+
+        if (gameData == null)
         {
             return;
         }
 
         gameData.playerPosition = player.transform.position;
         gameData.currentScene = SceneManager.GetActiveScene().buildIndex;
-        //
+
         gameData.inAirClimb = PlayerInAirState.climbAbility;
         gameData.wallSlideClimb = PlayerWallSlideState.climbAbility;
         gameData.ledgeCrouch = PlayerLedgeClimbState.crouchAbility;
@@ -94,8 +115,17 @@ public class DataPersistenceManager : MonoBehaviour
         gameData.glide = PlayerInAirState.glideAbility;
         gameData.wallJump = PlayerTouchingWallState.wallJumpAbility;
         gameData.ledgeWallJump = PlayerLedgeClimbState.wallJumpAbility;
-        //
-        dataHandler.Save(gameData);
-        Debug.Log("Saved Game Data");
+
+        dataHandler.Save(gameData, selectedProfileId);
+    }
+
+    public bool HasGameData()
+    {
+        return gameData != null;
+    }
+
+    public Dictionary<string, GameData> GetAllProfilesGameData()
+    {
+        return dataHandler.LoadAllProfiles();
     }
 }

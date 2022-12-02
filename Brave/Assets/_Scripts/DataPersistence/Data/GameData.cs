@@ -9,13 +9,13 @@ public class GameData
 {
     public Vector3 playerPosition;
     public int currentScene;
-    public bool inAirClimb, wallSlideClimb, ledgeCrouch, groundCrouch, dash, glide, wallJump, ledgeWallJump;
-    public bool doubleJump;
+    public bool inAirClimb, wallSlideClimb, ledgeCrouch, groundCrouch, dash, glide, wallJump, ledgeWallJump, doubleJump;
+    public string globalVariablesStateJson;
 
     public GameData()
     {
         playerPosition = new Vector2(-6, 1.25f);
-        currentScene = 0;
+        currentScene = 1;
         //
         inAirClimb = false;
         wallSlideClimb = false;

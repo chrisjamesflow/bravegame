@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public static bool CanPause = true;
 
+    public string exitName;
     public EventSystem eventSystem;
     public GameObject resumeButton;
     public GameObject pauseMenuUI;
@@ -75,9 +76,13 @@ public class PauseMenu : MonoBehaviour
 
     public void ToMainMenu()
     {
+        Time.timeScale = 1f;
+        pauseMenuUI.SetActive(false);
         pauseMusic.Stop();
-        SceneManager.LoadScene(0);
         MusicManager.instance.StopMusic();
+        GameIsPaused = false;
+        SceneManager.LoadScene(0);
+        PlayerPrefs.SetString("LastExitName", exitName);
     }
 
     public void QuitGame()
